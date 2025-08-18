@@ -3,20 +3,20 @@ package addressbook;
 import java.util.Scanner;
 
 public class AddressBookMain {
+    // Make scanner and addressBook class-level variables
+    private static Scanner scanner = new Scanner(System.in);
+    private static AddressBook myAddressBook = new AddressBook();
+
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
-        Scanner scanner = new Scanner(System.in);
-        AddressBook myAddressBook = new AddressBook();
-
-        // Add a default contact to start with
-        myAddressBook.addContact(new Contact("John", "Doe", "123 Main St", "Anytown", "Anystate", "12345", "555-1234", "john.doe@email.com"));
 
         while (true) {
             System.out.println("\nChoose an option:");
-            System.out.println("1. Edit Contact");
-            System.out.println("2. Delete Contact");
-            System.out.println("3. Display Contacts");
-            System.out.println("4. Exit");
+            System.out.println("1. Add Contact");
+            System.out.println("2. Edit Contact");
+            System.out.println("3. Delete Contact");
+            System.out.println("4. Display Contacts");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -24,19 +24,22 @@ public class AddressBookMain {
 
             switch (choice) {
                 case 1:
+                    addContact();
+                    break;
+                case 2:
                     System.out.print("Enter the first name of the contact to edit: ");
                     String nameToEdit = scanner.nextLine();
                     myAddressBook.editContact(nameToEdit);
                     break;
-                case 2:
+                case 3:
                     System.out.print("Enter the first name of the contact to delete: ");
                     String nameToDelete = scanner.nextLine();
                     myAddressBook.deleteContact(nameToDelete);
                     break;
-                case 3:
+                case 4:
                     myAddressBook.displayContacts();
                     break;
-                case 4:
+                case 5:
                     System.out.println("Exiting program.");
                     scanner.close();
                     return;
@@ -44,5 +47,29 @@ public class AddressBookMain {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
+    }
+
+    // New method to handle adding a contact from console input
+    private static void addContact() {
+        System.out.print("Enter First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter Last Name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Enter Address: ");
+        String address = scanner.nextLine();
+        System.out.print("Enter City: ");
+        String city = scanner.nextLine();
+        System.out.print("Enter State: ");
+        String state = scanner.nextLine();
+        System.out.print("Enter Zip: ");
+        String zip = scanner.nextLine();
+        System.out.print("Enter Phone Number: ");
+        String phoneNumber = scanner.nextLine();
+        System.out.print("Enter Email: ");
+        String email = scanner.nextLine();
+
+        Contact newContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        myAddressBook.addContact(newContact);
+        System.out.println("Contact added successfully.");
     }
 }
