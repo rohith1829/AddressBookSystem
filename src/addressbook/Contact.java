@@ -12,7 +12,7 @@ public class Contact {
     private String phoneNumber;
     private String email;
 
-    // Constructor
+    // Constructor (already exists)
     public Contact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,7 +24,46 @@ public class Contact {
         this.email = email;
     }
 
-    // To string method to print contact details
+    // --- Add Setters from here ---
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    // --- Add Getter for the first name ---
+    public String getFirstName() {
+        return firstName;
+    }
+
+
+    // toString method (already exists)
     @Override
     public String toString() {
         return "Contact {" +
